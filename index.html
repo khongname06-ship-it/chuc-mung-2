@@ -2,97 +2,189 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
-<title>Chúc Mừng Năm Mới 2026</title>
+<title>Chúc Mừng Năm Mới</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin: 0;
-  height: 100vh;
-  background: url("Screenshot 2026-01-21 120752.png") no-repeat center center fixed;
-  background-size: cover;
-  overflow: hidden;
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: "Segoe UI", sans-serif;
 }
 
-/* LỚP PHÁO HOA */
-canvas {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
+/* ===== GIỮ NỀN ẢNH CỦA BẠN ===== */
+body {
+    background: url("Screenshot 2026-01-21 120752.png") center / cover no-repeat fixed;
+}
+
+/* ===== LỚP PHỦ ===== */
+.overlay {
+    background: rgba(0,0,0,0.25);
+    min-height: 100vh;
+    padding: 30px 0;
+}
+
+/* ===== TIÊU ĐỀ ===== */
+h1 {
+    text-align: center;
+    color: gold;
+    font-size: 3rem;
+    text-shadow: 0 0 15px red;
+    margin-bottom: 40px;
+}
+
+/* ===== DẢI FILM ===== */
+.film-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.film {
+    display: flex;
+    width: max-content;
+    animation: filmScroll 30s linear infinite;
+}
+
+.film img {
+    height: 180px;
+    margin: 0 12px;
+    border-radius: 14px;
+    box-shadow: 0 0 15px rgba(255,215,0,0.7);
+}
+
+/* ===== CUỘN ===== */
+@keyframes filmScroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+    h1 { font-size: 2rem; }
+    .film img { height: 120px; }
 }
 </style>
 </head>
 
 <body>
+<div class="overlay">
 
-<canvas id="fireworks"></canvas>
+    <h1>🎉 An Khang Thịnh Vượng 🎉</h1>
 
-<script>
-const canvas = document.getElementById("fireworks");
-const ctx = canvas.getContext("2d");
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+    <div class="film-container">
+        <div class="film">
+            <!-- ẢNH -->
+            <!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Chúc Mừng Năm Mới</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-function r(a,b){return Math.random()*(b-a)+a}
-const fw=[];
-
-class F{
-  constructor(){
-    this.x=r(0,canvas.width);
-    this.y=canvas.height;
-    this.t=r(150,canvas.height/2);
-    this.c=`hsl(${r(0,360)},100%,60%)`;
-    this.p=[];
-    this.e=false;
-  }
-  u(){
-    if(!this.e){
-      this.y-=9;
-      if(this.y<=this.t){
-        this.e=true;
-        for(let i=0;i<160;i++){
-          this.p.push({x:this.x,y:this.y,vx:r(-7,7),vy:r(-7,7),l:90});
-        }
-      }
-    }
-  }
-  d(){
-    if(!this.e){
-      ctx.fillStyle=this.c;
-      ctx.beginPath();
-      ctx.arc(this.x,this.y,4,0,Math.PI*2);
-      ctx.fill();
-    }
-  }
+<style>
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    font-family: "Segoe UI", sans-serif;
 }
 
-function loop(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
-  if(Math.random()<0.12)fw.push(new F());
-  fw.forEach((f,i)=>{
-    f.u(); f.d();
-    if(f.e){
-      f.p.forEach((p,j)=>{
-        p.x+=p.vx; p.y+=p.vy;
-        p.vy+=0.05; p.l--;
-        ctx.fillStyle=f.c;
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,3,0,Math.PI*2);
-        ctx.fill();
-        if(p.l<=0)f.p.splice(j,1);
-      });
-      if(f.p.length===0)fw.splice(i,1);
-    }
-  });
-  requestAnimationFrame(loop);
+/* ===== GIỮ NỀN ẢNH CỦA BẠN ===== */
+body {
+    background: url("Screenshot 2026-01-21 120752.png") center / cover no-repeat fixed;
 }
-loop();
 
-window.onresize=()=>{
-  canvas.width=innerWidth;
-  canvas.height=innerHeight;
-};
-</script>
+/* ===== LỚP PHỦ ===== */
+.overlay {
+    background: rgba(0,0,0,0.25);
+    min-height: 100vh;
+    padding: 30px 0;
+}
 
+/* ===== TIÊU ĐỀ ===== */
+h1 {
+    text-align: center;
+    color: gold;
+    font-size: 3rem;
+    text-shadow: 0 0 15px red;
+    margin-bottom: 40px;
+}
+
+/* ===== DẢI FILM ===== */
+.film-container {
+    width: 100%;
+    overflow: hidden;
+}
+
+.film {
+    display: flex;
+    width: max-content;
+    animation: filmScroll 30s linear infinite;
+}
+
+.film img {
+    height: 180px;
+    margin: 0 12px;
+    border-radius: 14px;
+    box-shadow: 0 0 15px rgba(255,215,0,0.7);
+}
+
+/* ===== CUỘN ===== */
+@keyframes filmScroll {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 600px) {
+    h1 { font-size: 2rem; }
+    .film img { height: 120px; }
+}
+</style>
+</head>
+
+<body>
+<div class="overlay">
+
+    <h1>🎉 An Khang Thịnh Vượng 🎉</h1>
+
+    <div class="film-container">
+        <div class="film">
+            <!-- ẢNH -->
+            <img src="images/Screenshot 2026-01-19 151425.png">
+            <img src="images/Screenshot 2026-01-19 152837.png">
+            <img src="images/Screenshot 2026-01-19 201424.png">
+            <img src="images/Screenshot 2026-01-19 202350.png">
+            <!-- LẶP LẠI ĐỂ CUỘN MƯỢT -->
+            <img src="images/Screenshot 2026-01-19 151425.png">
+            <img src="images/Screenshot 2026-01-19 152837.png">
+            <img src="images/Screenshot 2026-01-19 201424.png">
+            <img src="images/Screenshot 2026-01-19 202350.png">
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
+
+            <!-- LẶP LẠI ĐỂ CUỘN MƯỢT -->
+            <img src="images/anh1.jpg">
+            <img src="images/anh2.jpg">
+            <img src="images/anh3.jpg">
+        </div>
+    </div>
+
+</div>
 </body>
 </html>
