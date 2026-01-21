@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Chúc Mừng Năm Mới 2026</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  background: url("Screenshot 2026-01-21 120752.png") no-repeat center center fixed;
+  background-size: cover;
+  overflow: hidden;
+}
+
+/* LỚP PHÁO HOA */
+canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="fireworks"></canvas>
+
+<script>
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+function r(a,b){return Math.random()*(b-a)+a}
+const fw=[];
+
+class F{
+  constructor(){
+    this.x=r(0,canvas.width);
+    this.y=canvas.height;
+    this.t=r(150,canvas.height/2);
+    this.c=`hsl(${r(0,360)},100%,60%)`;
+    this.p=[];
+    this.e=false;
+  }
+  u(){
+    if(!this.e){
+      this.y-=9;
+      if(this.y<=this.t){
+        this.e=true;
+        for(let i=0;i<160;i++){
+          this.p.push({x:this.x,y:this.y,vx:r(-7,7),vy:r(-7,7),l:90});
+        }
+      }
+    }
+  }
+  d(){
+    if(!this.e){
+      ctx.fillStyle=this.c;
+      ctx.beginPath();
+      ctx.arc(this.x,this.y,4,0,Math.PI*2);
+      ctx.fill();
+    }
+  }
+}
+
+function loop(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  if(Math.random()<0.12)fw.push(new F());
+  fw.forEach((f,i)=>{
+    f.u(); f.d();
+    if(f.e){
+      f.p.forEach((p,j)=>{
+        p.x+=p.vx; p.y+=p.vy;
+        p.vy+=0.05; p.l--;
+        ctx.fillStyle=f.c;
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,3,0,Math.PI*2);
+        ctx.fill();
+        if(p.l<=0)f.p.splice(j,1);
+      });
+      if(f.p.length===0)fw.splice(i,1);
+    }
+  });
+  requestAnimationFrame(loop);
+}
+loop();
+
+window.onresize=()=>{
+  canvas.width=innerWidth;
+  canvas.height=innerHeight;
+};
+</script>
+
+</body>
+</html>
